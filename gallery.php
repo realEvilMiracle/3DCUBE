@@ -19,6 +19,7 @@
             }
             ?>
         </div>
+        <a href="index.php" class="btn">На главную</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

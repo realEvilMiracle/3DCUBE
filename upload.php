@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="upload-container">
+    <div class="container">
         <h2>Upload Your Photo</h2>
         <?php if(isset($success)): ?>
             <div class="alert success"><?= $success ?></div>
@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="file" name="photo" accept="image/*" required>
             <button type="submit" class="btn">Upload</button>
         </form>
+        <a href="index.php" class="btn">На главную</a>
     </div>
 </body>
 </html>

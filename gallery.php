@@ -15,7 +15,7 @@
             require 'includes/db.php';
             $stmt = $pdo->query("SELECT filename FROM photos ORDER BY uploaded_at DESC");
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo '<div><img src="assets/uploads/' . htmlspecialchars($row['filename']) . '" alt="Фото"></div>';
+                echo '<div><img src="uploads/' . htmlspecialchars($row['filename']) . '" alt="Фото"></div>';
             }
             ?>
         </div>
@@ -26,7 +26,7 @@
     <script>
         $(document).ready(function(){
             $('.carousel').slick({
-                dots: true,
+                dots: false,
                 infinite: true,
                 speed: 300,
                 slidesToShow: 1,

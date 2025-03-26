@@ -1,17 +1,42 @@
+<?php
+require_once 'includes/db.php';
+require_once 'includes/functions.php';
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $uploadDir = 'uploads/';
+    
+    if (!empty($_FILES['photo'])) {
+        $filename = uniqid() . '_' . basename($_FILES['photo']['name']);
+        $targetPath = $uploadDir . $filename;
+
+        if (validateImage($_FILES['photo'])) {
+            if (move_uploaded_file($_FILES['photo']['tmp_name'], $targetPath)) {
+                $stmt = $pdo->prepare("INSERT INTO photos (filename, filepath) VALUES (?, ?)");
+                $stmt->execute([$filename, $targetPath]);
+                $success = "Photo uploaded successfully!";
+            }
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Загрузить фото</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Upload Photo</title>
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Загрузите ваше фото</h1>
-        <form action="includes/upload.php" method="post" enctype="multipart/form-data">
+    <div class="upload-container">
+        <h2>Upload Your Photo</h2>
+        <?php if(isset($success)): ?>
+            <div class="alert success"><?= $success ?></div>
+        <?php endif; ?>
+        <form method="POST" enctype="multipart/form-data">
             <input type="file" name="photo" accept="image/*" required>
-            <button type="submit">Загрузить</button>
+            <button type="submit" class="btn">Upload</button>
         </form>
     </div>
 </body>

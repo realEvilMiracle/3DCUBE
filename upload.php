@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="file" name="photo" accept="image/*" required>
             <button type="submit" class="btn">Upload</button>
         </form>
-        <a href="index.php" class="btn">На главную</a>
+        <a href="index.html" class="btn">На главную</a>
     </div>
 </body>
 </html>

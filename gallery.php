@@ -19,7 +19,7 @@
             }
             ?>
         </div>
-        <a href="index.php" class="btn">На главную</a>
+        <a href="index.html" class="btn">На главную</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -29,11 +29,17 @@
             $('.carousel').slick({
                 dots: false,
                 infinite: true,
-                speed: 300,
                 slidesToShow: 1,
-                adaptiveHeight: true
+                adaptiveHeight: false,
+                nextArrow: false,
+                prevArrow: false,
+                autoplay: true,
+                autoplaySpeed: 3000
             });
         });
+
+
+        
     </script>
 </body>
 </html>
